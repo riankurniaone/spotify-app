@@ -2,21 +2,18 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 body {
   background-color: #f6f8fd;
   margin: 30px 40px;
   font-family: "Poppins", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  padding: 20px 40px;
+}
+
+.container h1 {
+  margin: 12px 0;
 }
 
 .cardPlaylist {
@@ -28,38 +25,14 @@ body {
   margin-top: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .cardPlaylist img {
   width: 100%;
   height: auto;
   border-radius: 8px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .cardPlaylist h3 {
   font-weight: 600;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .btnSelect {
