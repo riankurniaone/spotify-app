@@ -43,7 +43,7 @@ export default class Home extends Component {
 
         {this.state.isAuthorize && (
           <>
-            <h1>Musify Playlist</h1>
+            <h1>Spotify Playlist</h1>
             <Searchbar
               accessToken={this.state.accessToken}
               onSuccess={(tracks) => this.handleSuccessSearch(tracks)}
