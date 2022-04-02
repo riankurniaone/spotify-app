@@ -3,23 +3,41 @@ import React, { useEffect, useState } from "react";
 import Track from "../../components/Track";
 import SearchBar from "../../components/Searchbar";
 import config from "../../utils/config";
+import FormPlaylist from "../../components/FormPlaylist";
+import { getUserProfile } from "../../utils/fetchAPI";
 
 export default function Home() {
   const [tracks, setTracks] = useState([]);
   const [accessToken, setAccessToken] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [selectedTrackURI, setSelectedTrackURI] = useState([]);
+  const [selectedTracks, setSelectedTracks] = useState([]);
+  const [user, setUser] = useState({});
   const [isSearch, setIsSearch] = useState(false);
 
-// useEffect for getting access token from hash url with URLSearchParams
 useEffect(() => {
   const params = new URLSearchParams(window.location.hash);
-  const accessToken = params.get("#access_token");
-  setAccessToken(accessToken);
-  setIsAuthorized(accessToken !== null);
+  const accessTokenParams = params.get("#access_token");
+
+  if (accessTokenParams !== null) {
+    setAccessToken(accessTokenParams);
+    setIsAuthorized(accessTokenParams !== null);
+
+    const setUserProfile = async () => {
+      try {
+        const response = await getUserProfile(accessTokenParams);
+
+        setUser(response);
+      } catch (e) {
+        alert(e);
+      }
+    };
+
+    setUserProfile();
+  }
 }, []);
 
-// kalau lagi ga search (kondisi false), selectedTracknya dimasukin ke state Tracks
+
 useEffect(() => {
   if (!isSearch) {
     const selectedTracks = filterSelectedTracks();
@@ -27,7 +45,6 @@ useEffect(() => {
     setTracks(selectedTracks);
     }
   }, [selectedTrackURI]);
-  // trigger - jalan kalau selectedTrackURI berubah tapi di kondisi search is false
 
   const getSpotifyLinkAuthorize = () => {
     const state = Date.now().toString();
@@ -36,28 +53,22 @@ useEffect(() => {
     return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=${config.RESPONSE_TYPE}&redirect_uri=${config.REDIRECT_URI}&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
   };
 
-  // untuk memfilter data track berdasarkan URI yang ada
   const filterSelectedTracks = () => {
     return tracks.filter((track) => selectedTrackURI.includes(track.uri));
   };
 
-  // result tracks from search
   const handleSuccessSearch = (searchTracks) => {
     setIsSearch(true);
     const selectedTracks = filterSelectedTracks();
 
-    // distinct agar data ga double antara track yang udah deselected dengan tracks hasil search
-    const searchDistinctTracks = searchTracks.filter(
-      (track) => !selectedTrackURI.includes(track.uri)
+    const selectedSearchTracks = searchTracks.filter((data) =>
+      selectedTrackURI.includes(data.uri)
     );
   
-    // ... spread operator untuk memecah array
-    setTracks([...selectedTracks, ...searchDistinctTracks]);
+    setTracks([...new Set([...selectedSearchTracks, ...searchTracks])]);
   };
 
   const clearSearch = () => {
-    const selectedTracks = filterSelectedTracks();
-
     setTracks(selectedTracks);
     setIsSearch(false);
   };
@@ -67,8 +78,10 @@ useEffect(() => {
 
     if (selectedTrackURI.includes(uri)) {
       setSelectedTrackURI(selectedTrackURI.filter((item) => item !== uri));
+      setSelectedTracks(selectedTrackURI.filter((item) => item.uri !== uri));
     } else {
       setSelectedTrackURI([...selectedTrackURI, uri]);
+      setSelectedTracks([...selectedTracks, track]);
     }
   };
 
@@ -76,7 +89,7 @@ useEffect(() => {
     <div className="container">
       {!isAuthorized && (
         <div className="login-app">
-          <p>Before using the app, please login to Spotify here.</p>
+          <p>Before using Spotify, please login to Spotify here.</p>
           <a href={getSpotifyLinkAuthorize()} className="btn btn-primary">
             Login
           </a>
@@ -85,7 +98,15 @@ useEffect(() => {
 
       {isAuthorized && (
         <>
-          <h1>Spotify Playlist</h1>
+          <h1>Spotify</h1>
+          <FormPlaylist
+            accessToken={accessToken}
+            userId={user.id}
+            uris={selectedTrackURI}
+          />
+          <hr />
+
+          <h3>Search Playlist</h3>
           <SearchBar
             accessToken={accessToken}
             onSuccess={(tracks) => handleSuccessSearch(tracks)}
@@ -101,7 +122,8 @@ useEffect(() => {
                 url={track.album.images[0].url}
                 title={track.name}
                 artist={track.artists[0].name}
-                toggleSelect={() => toggleSelect(track)}
+                select={selectedTrackURI.includes(track.uri)}
+                toggle={() => toggleSelect(track)}
               />
             ))}
           </div>

@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  padding: 20px;
+  padding: 10px 20px 20px;
 }
 
 .container h1,
@@ -19,13 +19,7 @@ p {
   margin: 12px 0;
 }
 
-.form-search .form-group {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-}
-
-.form-search input {
+.form input, textarea {
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 8px 16px;
@@ -52,6 +46,61 @@ p {
   color: #5b7db1;
   font-weight: 500;
 }
+
+.btn-text {
+  color: #5b7db1;
+  background-color: transparent;
+  padding: 0;
+  margin: 12px 0;
+}
+
+hr {
+  border: 1px solid #b7cadb;
+  margin: 30px 0;
+}
+
+/* Form Create Playlist */
+.form-playlist .form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 500px;
+  
+}
+
+.form-playlist .form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+}
+
+.form-playlist textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Search Playlist */
+.search-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px 0;
+  
+}
+
+.search-wrapper .form .form-group {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  
+}
+
+.search-wrapper input {
+  width: 100%;
+  border: 1px solid #b7cadb;
+}
+
 
 .track-list {
   display: grid;
@@ -102,17 +151,3 @@ p {
   margin-top: 10px;
 }
 
-.search-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 20px 0;
-}
-
-.btn-text {
-  color: #5b7db1;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  margin: 12px 0;
-}
