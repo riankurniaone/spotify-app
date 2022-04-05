@@ -1,59 +1,51 @@
 import React, { useState } from "react";
-import config from "../../utils/config";
+import { useSelector } from "react-redux";
+import { searchTrack } from "../../utils/fetchAPI";
 
-export default function SearchBar({ accessToken, onSuccess, onClearSearch }) {
-  const [text, setText] = useState("");
+export default function SearchBar({ onSuccess, onClearSearch }) {
+    const [text, setText] = useState("");
+    const accessToken = useSelector((state) => state.auth.accessToken);
 
-  const handleInput = (e) => {
-    setText(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const requestOptions = {
-      headers: {
-        Authorization: "Bearer " + accessToken,
-        "Content-Type": "application/json",
-      },
+    const handleInput = (e) => {
+        setText(e.target.value);
     };
 
-    try {
-      const response = await fetch(
-        `${config.SPOTIFY_BASE_URL}/search?type=track&q=${text}`,
-        requestOptions
-      ).then((data) => data.json());
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-      const tracks = response.tracks.items;
-      onSuccess(tracks);
-    } catch (e) {
-      alert(e);
-    }
-  };
+        try {
+            const responseSearch = await searchTrack(text, accessToken);
 
-  const clearSearch = () => {
-    setText("");
-    onClearSearch();
-  };
+            const tracks = responseSearch.tracks.items;
+            onSuccess(tracks);
+        } catch (e) {
+            alert(e);
+        }
+    };
 
-  return (
-    <div className="search-wrapper">
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <input
-            type="text"
-            name="query"
-            placeholder="Search..."
-            onChange={handleInput}
-            required
-            value={text}
-          />
-          <button className="btn btn-primary">Search</button>
+    const clearSearch = () => {
+        setText("");
+        onClearSearch();
+    };
+
+    return (
+        <div className="search-wrapper">
+            <form className="form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        name="query"
+                        placeholder="Search..."
+                        onChange={handleInput}
+                        required
+                        value={text}
+                    />
+                    <button className="btn btn-primary">Search</button>
+                </div>
+            </form>
+            <button className="btn btn-text" onClick={clearSearch}>
+                Clear Search
+            </button>
         </div>
-      </form>
-      <button className="btn btn-text" onClick={clearSearch}>
-        Clear Search
-      </button>
-    </div>
-  );
+    );
 }
