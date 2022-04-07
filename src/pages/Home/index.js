@@ -48,7 +48,7 @@ export default function Home() {
 
     const getSpotifyLinkAuthorize = () => {
         const state = Date.now().toString();
-        const clientId = process.env.REACT_APP_API_KEY;
+        const clientId = process.env.REACT_APP_SPOTIFY_ID;
 
         return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=${config.RESPONSE_TYPE}&redirect_uri=${config.REDIRECT_URI}&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
     };
@@ -106,7 +106,7 @@ export default function Home() {
 
             {isAuthorized && (
                 <>
-                    <h1>Musify</h1>
+                    <h1>Spotify</h1>
                     <FormPlaylist uris={selectedTrackURI} />
                     <hr />
 

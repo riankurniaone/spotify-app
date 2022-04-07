@@ -35,7 +35,7 @@ export default function SearchBar({ onSuccess, onClearSearch }) {
                     <input
                         type="text"
                         name="query"
-                        placeholder="Search..."
+                        placeholder="Search tracks..."
                         onChange={handleInput}
                         required
                         value={text}

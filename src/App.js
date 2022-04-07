@@ -2,9 +2,12 @@
 // import './App.css';
 // import data from "./data.js";
 // import Track from "./components/Track";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-
+import CreatePlaylist from "./pages/CreatePlaylist";
+import Login from "./pages/Login";
 // function App() {
   // const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -26,7 +29,20 @@ import Home from "./pages/Home";
 // }
 
 function App() {
-  return <Home />;
+  const isAuthorized = useSelector((state) => state.auth.isAuthorized);
+
+  return (
+    <Router>
+      <Switch>
+        <Route path="/create-playlist" exact>
+          {isAuthorized ? <CreatePlaylist /> : <Redirect to="/" />}
+        </Route>
+        <Route path="/" exact>
+          <Login />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
