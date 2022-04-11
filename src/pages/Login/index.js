@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import config from "../../utils/config";
-import { getUserProfile } from "../../utils/fetchAPI";
-import { useDispatch } from "react-redux";
-import { login } from "../../utils/authSlice";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react';
+import config from '../../utils/config';
+import { getUserProfile } from '../../utils/fetchAPI';
+import { useDispatch } from 'react-redux';
+import { login } from '../../utils/authSlice';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ export default function Login() {
       <p>
         Before using <b>Spotify App</b>, please login to Spotify here.
       </p>
-      <a href={getSpotifyLinkAuthorize()} className="btn btn-primary">
+      <a href={getSpotifyLinkAuthorize()} className="btn btn-login">
         Login
       </a>
     </div>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export default function Track({ url, title, artist, select, toggle }) {
+export default function Track({ 
+  url, title, artist, select, toggle }) { //eslint-disable-line
   const [isSelected, setIsSelected] = useState(select);
 
   const handleSelect = () => {
@@ -8,12 +9,12 @@ export default function Track({ url, title, artist, select, toggle }) {
     toggle();
   };
 
-    return (
-      <div className="card-playlist">
-        <img src={url} alt="Track Playlist" />
-        <h3>{title}</h3>
-        <p>{artist}</p>
-        <button
+  return (
+    <div className="card-playlist">
+      <img src={url} alt="Track Playlist" />
+      <h3>{title}</h3>
+      <p>{artist}</p>
+      <button
         className={`btn btn-select ${
           isSelected ? "btn-primary" : "btn-secondary"
         }`}
@@ -21,6 +22,6 @@ export default function Track({ url, title, artist, select, toggle }) {
       >
         {isSelected ? "Deselect" : "Select"}
       </button>
-      </div>
-    );
-      }
+    </div>
+  );
+}

@@ -2,12 +2,19 @@
 // import './App.css';
 // import data from "./data.js";
 // import Track from "./components/Track";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
-import CreatePlaylist from "./pages/CreatePlaylist";
-import Login from "./pages/Login";
+import React from 'react';
+// import React from 'react';
+import { useSelector } from 'react-redux';
+import {
+  Redirect,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
+import './App.css';
+import CreatePlaylist from './pages/CreatePlaylist';
+import Login from './pages/Login';
 // function App() {
   // const API_KEY = process.env.REACT_APP_API_KEY;
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Track from "../../components/Track";
-import SearchBar from "../../components/Searchbar";
-import FormPlaylist from "../../components/FormPlaylist";
-import NavigationBar from "../../components/NavigationBar";
+import React, { useEffect, useState } from 'react';
+import Track from '../../components/Track';
+import SearchBar from '../../components/Searchbar';
+import FormPlaylist from '../../components/FormPlaylist';
+import NavigationBar from '../../components/NavigationBar';
 
 export default function CreatePlaylist() {
   const [tracks, setTracks] = useState([]);
@@ -19,7 +19,7 @@ export default function CreatePlaylist() {
   }, [selectedTrackURI]);
 
   const filterSelectedTracks = () => {
-    return tracks.filter((track) => selectedTrackURI.includes(track.uri));
+    tracks.filter((track) => selectedTrackURI.includes(track.uri));
   };
 
   const handleSuccessSearch = (searchTracks) => {
@@ -38,7 +38,7 @@ export default function CreatePlaylist() {
   };
 
   const toggleSelect = (track) => {
-    const uri = track.uri;
+    const { uri } = track;
 
     if (selectedTrackURI.includes(uri)) {
       setSelectedTrackURI(selectedTrackURI.filter((item) => item !== uri));
@@ -56,9 +56,9 @@ export default function CreatePlaylist() {
 
       <hr />
       <SearchBar
-        onSuccess={(tracks) => handleSuccessSearch(tracks)}
-        onClearSearch={clearSearch}
-      />
+        onSuccess={(tracks) => handleSuccessSearch(tracks)} 
+        onClearSearch={clearSearch} 
+      /> 
 
       {tracks.length === 0 && <p>No tracks</p>}
 

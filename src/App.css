@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #03631b;
+  background-color: #1aa33c;
   padding: 10px 20px 20px;
 }
 
@@ -43,6 +43,18 @@ hr {
   color: white;
 }
 
+.btn-login {
+  background-color: #0936fc;
+  color: white;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+}
+
+.login-wrapper, p{
+  text-align: center;
+}
+
 .btn-secondary {
   background-color: transparent;
   border: 1px solid #5b7db1;
@@ -51,7 +63,7 @@ hr {
 }
 
 .btn-text {
-  color: #5b7db1;
+  color: #000000;
   background-color: transparent;
   padding: 0;
   margin: 12px 0;
