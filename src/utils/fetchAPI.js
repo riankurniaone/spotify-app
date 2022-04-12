@@ -10,7 +10,7 @@ export const searchTrack = async (query, accessToken) => {
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/search?type=track&q=${query}`,
-        requestOptions
+        requestOptions,
     ).then((data) => data.json());
 
     return response;
@@ -26,7 +26,7 @@ export const getUserProfile = async (accessToken) => {
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/me`,
-        requestOptions
+        requestOptions,
     ).then((data) => data.json());
 
     return response;
@@ -55,7 +55,7 @@ export const createPlaylist = async (
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/users/${userId}/playlists`,
-        requestOptions
+        requestOptions,
     ).then((data) => data.json());
 
     return response;
@@ -77,7 +77,7 @@ export const addTracksToPlaylist = async (accessToken, playlistId, uris) => {
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/playlists/${playlistId}/tracks`,
-        requestOptions
+        requestOptions,
     ).then((data) => data.json());
 
     return response;

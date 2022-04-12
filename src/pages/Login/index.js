@@ -11,7 +11,7 @@ export default function Login() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.hash);
-    const accessTokenParams = params.get("#access_token");
+    const accessTokenParams = params.get('#access_token');
 
     if (accessTokenParams !== null) {
       const setUserProfile = async () => {
@@ -23,7 +23,7 @@ export default function Login() {
               user: response,
             })
           );
-          history.push("/create-playlist");
+          history.push('/create-playlist');
         } catch (e) {
           alert(e);
         }
@@ -34,6 +34,8 @@ export default function Login() {
 
   const getSpotifyLinkAuthorize = () => {
     const state = Date.now().toString();
+
+    // eslint-disable-next-line no-undef
     const clientId = process.env.REACT_APP_SPOTIFY_ID;
 
     return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=${config.RESPONSE_TYPE}&redirect_uri=${config.REDIRECT_URI}&state=${state}&scope=${config.SPOTIFY_SCOPE}`;

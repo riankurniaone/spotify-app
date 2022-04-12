@@ -41,12 +41,12 @@ const handleSubmit = async (e) => {
                 description: '',
             });
 
-            alert("Playlist created successfully!");
+            alert('Playlist created successfully!');
         } catch (e) {
             lert(e); /*global lert*/
         }
     } else {
-        alert("Title must be at least 10 characters long.");
+        alert('Title must be at least 10 characters long.');
     }
 };
 

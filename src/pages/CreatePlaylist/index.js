@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import Track from '../../components/Track';
 import SearchBar from '../../components/Searchbar';
@@ -55,15 +56,15 @@ export default function CreatePlaylist() {
       <FormPlaylist uris={selectedTrackURI} />
 
       <hr />
-      <SearchBar
+      <SearchBar //eslint-disable-line
         onSuccess={(tracks) => handleSuccessSearch(tracks)} 
         onClearSearch={clearSearch} 
       /> 
 
-      {tracks.length === 0 && <p>No tracks</p>}
+      {tracks.length === 0 && <p>No tracks</p>} 
 
       <div className="track-list">
-        {tracks.map((track) => (
+        {tracks.map((track) => ( //eslint-disable-line
           <Track
             key={track.id}
             url={track.album.images[0].url}

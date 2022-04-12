@@ -16,11 +16,11 @@ export default function Track({
       <p>{artist}</p>
       <button
         className={`btn btn-select ${
-          isSelected ? "btn-primary" : "btn-secondary"
+          isSelected ? 'btn-primary' : 'btn-secondary'
         }`}
         onClick={handleSelect}
       >
-        {isSelected ? "Deselect" : "Select"}
+        {isSelected ? 'Deselect' : 'Select'}
       </button>
     </div>
   );
