@@ -62,6 +62,7 @@ return (
                     id="title"
                     value={playlist.title}
                     onChange={handleChange}
+                    placeholder="Your playlist title"
                     required
                 />
             </div>
@@ -72,6 +73,7 @@ return (
                     name="description"
                     value={playlist.description}
                     onChange={handleChange}
+                    placeholder="Your playlist description"
                     required
                 ></textarea>
             </div>
