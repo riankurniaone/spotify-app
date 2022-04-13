@@ -56,15 +56,14 @@ export default function CreatePlaylist() {
       <FormPlaylist uris={selectedTrackURI} />
 
       <hr />
-      <SearchBar //eslint-disable-line
+      <SearchBar 
         onSuccess={(tracks) => handleSuccessSearch(tracks)} 
         onClearSearch={clearSearch} 
       /> 
 
-      {tracks.length === 0 && <p>No tracks</p>} 
 
-      <div className="track-list">
-        {tracks.map((track) => ( //eslint-disable-line
+      <div className="track-list"> 
+        {tracks?tracks.map((track) => ( //eslint-disable-line
           <Track
             key={track.id}
             url={track.album.images[0].url}
@@ -73,7 +72,7 @@ export default function CreatePlaylist() {
             select={selectedTrackURI.includes(track.uri)}
             toggle={() => toggleSelect(track)}
           />
-        ))}
+        )):<p>No Tracks</p>}
       </div>
     </>
   );
