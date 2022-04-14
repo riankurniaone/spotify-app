@@ -4,6 +4,7 @@ import { getUserProfile } from '../../utils/fetchAPI';
 import { useDispatch } from 'react-redux';
 import { login } from '../../utils/authSlice';
 import { useHistory } from 'react-router-dom';
+import { Anchor } from '@mantine/core';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -46,9 +47,9 @@ export default function Login() {
       <p>
         Before using <b>Spotify App</b>, please login to Spotify here.
       </p>
-      <a href={getSpotifyLinkAuthorize()} className="btn btn-login">
-        Login
-      </a>
+      <Anchor href={getSpotifyLinkAuthorize()} radius="lg" size="lg" uppercase>
+        LOGIN
+      </Anchor>
     </div>
   );
 }

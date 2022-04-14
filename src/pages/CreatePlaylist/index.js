@@ -66,7 +66,7 @@ export default function CreatePlaylist() {
         {tracks?tracks.map((track) => ( //eslint-disable-line
           <Track
             key={track.id}
-            url={track.album.images[0].url}
+            url={track.album.images[0].url} 
             title={track.name}
             artist={track.artists[0].name}
             select={selectedTrackURI.includes(track.uri)}
