@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Track({ url, title, artist, select, toggle }) { //eslint-disable-line
+export default function Track({ url, title, artist, select, toggle }) { 
   const [isSelected, setIsSelected] = useState(select);
 
   const handleSelect = () => {

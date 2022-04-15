@@ -47,7 +47,7 @@ export default function Login() {
       <p>
         Before using <b>Spotify App</b>, please login to Spotify here.
       </p>
-      <Anchor href={getSpotifyLinkAuthorize()} radius="lg" size="lg" uppercase>
+      <Anchor href={getSpotifyLinkAuthorize()} radius="lg" size="lg">
         LOGIN
       </Anchor>
     </div>

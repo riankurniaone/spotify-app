@@ -71,7 +71,7 @@ export default function CreatePlaylist() {
             artist={track.artists[0].name}
             select={selectedTrackURI.includes(track.uri)}
             toggle={() => toggleSelect(track)}
-          />
+          /> 
         )):<p>No Tracks</p>}
       </div>
     </>
