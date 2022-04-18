@@ -1,41 +1,41 @@
-import config from './config';
+import config from "./config";
 
-export const searchTrack = async (query, accessToken) => {
+export const searchTrack = async (query: string, accessToken: string) => {
     const requestOptions = {
         headers: {
             Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
     };
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/search?type=track&q=${query}`,
-        requestOptions,
+        requestOptions
     ).then((data) => data.json());
 
     return response;
 };
 
-export const getUserProfile = async (accessToken) => {
+export const getUserProfile = async (accessToken: string) => {
     const requestOptions = {
         headers: {
             Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
     };
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/me`,
-        requestOptions,
+        requestOptions
     ).then((data) => data.json());
 
     return response;
 };
 
 export const createPlaylist = async (
-    accessToken,
-    userId,
-    { name, description }
+    accessToken: string,
+    userId: string,
+{ name, description }: { name: string; description: string }
 ) => {
     const data = JSON.stringify({
         name,
@@ -45,39 +45,43 @@ export const createPlaylist = async (
     });
 
     const requestOptions = {
-        method: 'POST',
+        method: "POST",
         body: data,
         headers: {
             Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
     };
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/users/${userId}/playlists`,
-        requestOptions,
+        requestOptions
     ).then((data) => data.json());
 
     return response;
 };
 
-export const addTracksToPlaylist = async (accessToken, playlistId, uris) => {
+export const addTracksToPlaylist = async (
+    accessToken: string,
+    playlistId: string,
+    uris: string[]
+) => {
     const data = JSON.stringify({
         uris,
     });
 
     const requestOptions = {
-        method: 'POST',
+        method: "POST",
         body: data,
         headers: {
             Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
     };
 
     const response = await fetch(
         `${config.SPOTIFY_BASE_URL}/playlists/${playlistId}/tracks`,
-        requestOptions,
+        requestOptions
     ).then((data) => data.json());
 
     return response;

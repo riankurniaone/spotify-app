@@ -1,52 +1,57 @@
-import React, { useState } from 'react';
-import { addTracksToPlaylist, createPlaylist } from '../../utils/fetchAPI';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { addTracksToPlaylist, createPlaylist } from "../../utils/fetchAPI";
+import { useSelector } from "react-redux";
+import { TRootState } from "../../store";
 
-export default function FormPlaylist({ uris }) { //eslint-disable-line
-    const [playlist, setPlaylist] = useState({
-        title: '',
-        description: '',
+interface IProps {
+    uris: string[];
+}
+
+interface IFormState {
+    title: string;
+    description: string;
+}
+
+const FormPlaylist: React.FC<IProps> = ({ uris }) => {
+    const [playlist, setPlaylist] = useState<IFormState>({
+        title: "",
+        description: "",
 });
-    const accessToken = useSelector((state) => state.auth.accessToken);
-    const userId = useSelector((state) => state.auth.user.id);
+const accessToken: string = useSelector(
+    (state: TRootState) => state.auth.accessToken
+);
+const userId: string = useSelector((state: TRootState) => state.auth.user.id);
 
-    const handleChange = (e) => {
-    const { name, value } = e.target;
+const handleChange = (e: React.ChangeEvent) => {
+    const target = e.target as HTMLTextAreaElement;
+    const { name, value } = target;
 
     setPlaylist({ ...playlist, [name]: value });
 };
 
-const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (playlist.title.length > 10) {
         try {
-            const responsePlaylist = await createPlaylist(
-                accessToken,
-                userId,
-                {
-                    name: playlist.title,
-                    description: playlist.description,
-                },
-            );
-
-            await addTracksToPlaylist(
-                accessToken,
-                responsePlaylist.id,
-                uris,
-            );
-
-            setPlaylist({
-                title: '',
-                description: '',
+            const responsePlaylist = await createPlaylist(accessToken, userId, {
+                name: playlist.title,
+                description: playlist.description,
             });
 
-            alert('Playlist created successfully!');
+            await addTracksToPlaylist(accessToken, responsePlaylist.id, uris);
+
+            setPlaylist({
+                title: "",
+                description: "",
+            });
+
+            alert("Playlist created successfully!");
         } catch (e) {
-            lert(e); /*global lert*/
+            alert(e); 
         }
     } else {
-        alert('Title must be at least 10 characters long.');
+        alert("Title must be at least 10 characters long.");
     }
 };
 
@@ -83,4 +88,7 @@ return (
         </form>
     </div>
 );
-}
+
+};
+
+export default FormPlaylist;

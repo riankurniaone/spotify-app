@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { searchTrack } from '../../utils/fetchAPI';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { searchTrack } from "../../utils/fetchAPI";
+import { TRootState } from "../../store";
 
-export default function SearchBar({ onSuccess, onClearSearch }) { //eslint-disable-line
-    const [text, setText] = useState('');
-    const accessToken = useSelector((state) => state.auth.accessToken);
+interface Props {
+    onSuccess: (tracks: any[]) => void;
+    onClearSearch: () => void;
+}
 
-    const handleInput = (e) => {
-        setText(e.target.value);
+const SearchBar: React.FC<Props> = ({ onSuccess, onClearSearch }) => {
+    const [text, setText] = useState<string>("");
+    const accessToken: string = useSelector(
+    (state: TRootState) => state.auth.accessToken
+    );
+
+    const handleInput = (e: React.ChangeEvent) => {
+        const target = e.target as HTMLTextAreaElement;
+        setText(target.value);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
@@ -23,8 +32,8 @@ export default function SearchBar({ onSuccess, onClearSearch }) { //eslint-disab
         }
     };
 
-    const clearSearch = () => {
-        setText('');
+    const clearSearch: () => void = () => {
+        setText("");
         onClearSearch();
     };
 
@@ -48,4 +57,6 @@ export default function SearchBar({ onSuccess, onClearSearch }) { //eslint-disab
             </button>
         </div>
     );
-}
+};
+
+export default SearchBar;
