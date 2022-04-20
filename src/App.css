@@ -131,7 +131,7 @@ hr {
 }
 
 
-.card-playlist {
+.card-track {
   width: 200px;
   border-radius: 8px;
   border: 2px solid #00050a;
@@ -141,17 +141,17 @@ hr {
   
 }
 
-.card-playlist:hover {
+.card-track:hover {
   transition: all 0.1s ease-out; 
   background-color: #1a07c7;
 }
 
-.card-playlist .card-info {
+.card-track .card-info {
   display: flex;
   flex-direction: column;
 }
 
-.card-playlist img {
+.card-track img {
   width: 200px;
   height: 200px;
   border-radius: 5px;
@@ -167,7 +167,7 @@ h4 {
   margin: 12px 0;
 }
 
-.card-playlist .card-info p {
+.card-track .card-info p {
   font-size: 14px;
   color: #0a0a0a;
   margin: 0;

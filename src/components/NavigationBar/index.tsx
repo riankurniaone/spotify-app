@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../redux/store";
 import { logout } from "../../redux/authSlice";
 
 const NavigationBar: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleLogout: () => void = () => {
     dispatch(logout());

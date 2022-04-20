@@ -1,7 +1,6 @@
 import React, { useState } from "react";
+import { RootState, useAppSelector } from "../../redux/store";
 import { addTracksToPlaylist, createPlaylist } from "../../utils/fetchAPI";
-import { useSelector } from "react-redux";
-import { TRootState } from "../../store";
 
 interface IProps {
     uris: string[];
@@ -17,10 +16,12 @@ const FormPlaylist: React.FC<IProps> = ({ uris }) => {
         title: "",
         description: "",
 });
-const accessToken: string = useSelector(
-    (state: TRootState) => state.auth.accessToken
+const accessToken: string = useAppSelector(
+    (state: RootState) => state.auth.accessToken
 );
-const userId: string = useSelector((state: TRootState) => state.auth.user.id);
+const userId: string | undefined = useAppSelector(
+    (state: RootState) => state.auth.user?.id
+);
 
 const handleChange = (e: React.ChangeEvent) => {
     const target = e.target as HTMLTextAreaElement;
@@ -67,6 +68,7 @@ return (
                     id="title"
                     value={playlist.title}
                     onChange={handleChange}
+                    aria-label="input-title"
                     placeholder="Your playlist title"
                     required
                 />
@@ -79,11 +81,12 @@ return (
                     value={playlist.description}
                     onChange={handleChange}
                     placeholder="Your playlist description"
+                    aria-label="input-title"
                     required
                 ></textarea>
             </div>
             <button className="btn btn-primary" type="submit">
-                Submit
+                Create
             </button>
         </form>
     </div>
