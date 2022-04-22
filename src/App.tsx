@@ -18,7 +18,7 @@ function App() {
   );
 
   return (
-    <Router>
+    <><Router>
       <Switch>
         <Route path="/create-playlist" exact>
           {isAuthorized ? <CreatePlaylist /> : <Redirect to="/" />}
@@ -28,6 +28,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    </>
   );
 }
 

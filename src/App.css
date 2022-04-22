@@ -3,8 +3,15 @@
 }
 
 body {
-  background-color: #26c74e;
-  padding: 10px 20px 20px;
+  background-color: #000000;
+  padding: 5px 10px 10px;
+}
+
+.form-playlist{
+  background: url("./assets/spotify-logo.png");
+  background-size: 338px 338px ;
+  background-repeat: no-repeat;
+  padding: 10px 500px 17px;
 }
 
 *{
@@ -20,11 +27,16 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+}
+
+.navbar-brand, h1{
+  color: white;
 }
 
 .form input, textarea {
   border-radius: 5px;
-  border: 1px solid #080808;
+  border: 1px solid #ffffff;
   padding: 8px 16px;
   font-size: 14px;
   background-color: #a09c9c;
@@ -54,6 +66,15 @@ hr {
 
 .login-wrapper, p{
   text-align: center;
+  color: white;
+}
+
+.login-wrapper{
+  background: url("./assets/spotify-logo.png");
+  background-size: 250px 250px ;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  padding: 310px 500px 1px;
 }
 
 .btn-secondary {
@@ -64,20 +85,21 @@ hr {
 }
 
 .btn-text {
-  color: #000000;
+  color: #ffffff;
   background-color: transparent;
-  padding: 0;
+  padding: 3px 10px 10px; 
   margin: 12px 0;
 }
 
 hr {
-  border: 1px solid #0a0a0a;
+  border: 1px solid #ffffff;
   margin: 30px 0;
 }
 
 /* Form Create Playlist */
 .form-playlist h3 {
-  font-weight: 600;
+  font-weight: 800;
+  color: white;
 }
 
 
@@ -86,13 +108,13 @@ hr {
   flex-direction: column;
   gap: 16px;
   width: 500px;
-  
 }
 
 .form-playlist .form .form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  color: white;
   
 }
 
@@ -114,12 +136,12 @@ hr {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  
+  padding: 10px 10px 2px;
 }
 
 .search-wrapper input {
   width: 100%;
-  border: 1px solid #070707;
+  border: 1px solid #ffffff;
 }
 
 
@@ -130,11 +152,10 @@ hr {
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
 }
 
-
 .card-track {
   width: 200px;
   border-radius: 8px;
-  border: 2px solid #00050a;
+  border: 2px solid #ffffff;
   padding: 14px;
   background-color: rgb(94, 238, 75);
   margin-top: 30px;
