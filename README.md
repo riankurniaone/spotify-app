@@ -68,3 +68,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+README SPOTIFY APP
+
+# Spotify App
+
+Spotify App adalah aplikasi berbasis web dengan menggunakan React Library. Spotify App merupakan aplikasi untuk mendengarkan musik dari berbagai genre. Aplikasi ini dapat membuat playlist (daftar putar) yang berisikan lagu-lagu yang sesuai user inginkan dengan mudah dan akan tampil playlist yang sudah dibuat tersebut di aplikasi Spotify.
+
+## Installation
+
+Use the link (https://final-project-spotify-app.vercel.app/) to install Spotify App.
+
+## Usage
+
+#1 Akses aplikasi dengan mengklik link (https://final-project-spotify-app.vercel.app/)
+#2 Akun Gigih sudah ditambahkan dan diberi akses untuk bisa masuk dengan email (gigih2frontend@gmail.com)
+#3 Pada tampilan awal akan ada tombol "Login" untuk login ke aplikasi 
+#4 Setelah klik login akan masuk tampilan utama yang di dalamnya dapat membuat sebuah playlist baru dan men-search lagu sesuai yang diinginkan
+#5 Jika ingin membuat playlist baru maka silakan search lagu yang diinginkan pada bagian search lagu kemudian "select" lagu yang diinginkan dan jika ingin mengubah lagu yang ter-select maka klik saja "deselect"
+#6 Setelah memilih lagu lagu yang ter-select maka silahkan untuk ke bagian create playlist dan isi bagian "title" dengan minimal 10 karakter lalu isi juga "deskripsi" playlist tersebut kemudian klik tombol "create" dan akan muncul notifikasi bahwa playlist sudah dibuat
+#7 Setelah sukses playlist terbuat maka user dapat mengecek playlist tersebut di aplikasi SPOTIFY yang ada di handphone/laptop kamu maka akan muncul playlist baru dengan lagu yang ter-select tadi di bagian playlist
+
+## Contributing
+
+#1.	Akun Gigih sudah ditambahkan dan diberi akses untuk bisa masuk dengan email gigih2frontend@gmail.com 
+#2.	Di tampilan aplikasi, saya sudah menambahkan icon gambar spotify supaya user seperti menggunakan aplikasi spotify yang sesungguhnya
+#3.	Untuk menambahkan create playlist, pengguna/user silakan login dahulu dan jika sudah login maka user dipersilahkan untuk men-search lagu terlebih dahulu yang diinginkan lalu klik select untuk memilih lagu yang diinginkan, setelah memilih lagu – lagu yang diinginkan maka silakan isi form create playlist dengan title harus diisi dengan minimal 10 karakter kemudian isi deskripsi playlist setelah itu klik create maka akan muncul notifikasi bahwa playlist sudah dibuat. Setelah itu silakan cek aplikasi spotify kamu dan lihat dibagian playlist maka playlist yang telah kamu buat tadi akan tampil di aplikasi spotify kamu
+#4.	Saya juga telah melakukan testing menggunakan MSW untuk mock API async call
+#5.	Saya juga telah melakukan semua problem statement dan technical requirements 
+
